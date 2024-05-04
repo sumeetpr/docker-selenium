@@ -1,6 +1,6 @@
 pipeline{
 
-    agent {label "NODE1"}
+    agent any
 
     stages{
         stage('Build jar'){
@@ -20,7 +20,9 @@ pipeline{
             }
              steps{
                  bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
-                 bat "docker push sumeeetpr/selenium"
+                 bat 'docker push sumeeetpr/selenium:latest'
+                 bat "docker tag sumeeetpr/selenium:latest sumeeetpr/selenium:${env.BUILD_NUMBER}"
+                 bat "docker push sumeeetpr/selenium:${env.BUILD_NUMBER}"
             }
         }
     }
