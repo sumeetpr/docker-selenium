@@ -6,7 +6,7 @@ pipeline{
         stage('Build jar'){
 
             steps{
-               sh "mvn clean package -DskipTests"
+               bat "mvn clean package -DskipTests"
             }
         }
         stage('build image'){
