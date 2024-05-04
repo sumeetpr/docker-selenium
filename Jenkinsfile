@@ -4,11 +4,7 @@ pipeline{
 
     stages{
         stage('Build jar'){
-        agent {
-            docker{
-                image 'maven:eclipse-temurin:17-jdk-focal'
-            }
-        }
+
             steps{
                sh "mvn clean package -DskipTests"
             }
