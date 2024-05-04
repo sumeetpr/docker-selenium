@@ -2,27 +2,17 @@ pipeline{
 
     agent any
 
-    environment{
-        NUM = 3
-    }
     stages{
-
         stage('Build jar'){
             steps{
                bat "mvn clean package -DskipTests"
             }
-
         }
-
         stage('build image'){
-            environment{
-                NUM = 3
-            }
              steps{
                  bat "docker build -t=sumeeetpr/selenium ."
             }
         }
-
         stage('Push Image'){
             environment{
                 DOCKER_HUB = credentials('dockerhub_creds')
@@ -33,7 +23,6 @@ pipeline{
             }
         }
     }
-
     post{
         always{
             bat "docker logout"
