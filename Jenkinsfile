@@ -5,12 +5,12 @@ pipeline{
     stages{
         stage('Build jar'){
             steps{
-               sh "mvn clean package -DskipTests"
+               bat "mvn clean package -DskipTests"
             }
         }
         stage('build image'){
              steps{
-                 sh "docker build -t=sumeeetpr/selenium ."
+                 bat "docker build -t=sumeeetpr/selenium ."
             }
         }
         stage('Push Image'){
@@ -18,8 +18,8 @@ pipeline{
                 DOCKER_HUB = credentials('dockerhub_creds')
             }
              steps{
-                 sh 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
-                 sh "docker push sumeeetpr/selenium"
+                 bat 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
+                 bat "docker push sumeeetpr/selenium"
             }
         }
     }
