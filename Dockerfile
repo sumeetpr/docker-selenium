@@ -9,4 +9,4 @@ ADD runner.sh               runner.sh
 
 
 # start the runner.sh
-ENTRYPOINT sh runner.sh
+#ENTRYPOINT sh runner.sh
