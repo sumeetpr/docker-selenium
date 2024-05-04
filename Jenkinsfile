@@ -1,6 +1,6 @@
 pipeline{
 
-    agent {label NODE1}
+    agent none
 
     stages {
         stage('Build jar') {
