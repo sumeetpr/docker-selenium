@@ -18,7 +18,7 @@ pipeline{
                 DOCKER_HUB = credentials('dockerhub_creds')
             }
              steps{
-                 bat 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
+                 bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
                  bat "docker push sumeeetpr/selenium"
             }
         }
