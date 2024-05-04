@@ -1,6 +1,6 @@
 pipeline{
 
-    agent any
+    agent none
 
     stages {
         stage('Build jar') {
@@ -10,7 +10,7 @@ pipeline{
             }
         }
             steps {
-               bat "mvn clean package -DskipTests"
+               sh "mvn clean package -DskipTests"
             }
         }
         stage('build image') {
@@ -38,7 +38,7 @@ pipeline{
     }
     post{
         always{
-            bat "docker logout"
+            sh "docker logout"
         }
     }
 }
