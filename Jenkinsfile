@@ -2,18 +2,18 @@ pipeline{
 
     agent none
 
-    stages{
-        stage('Build jar'){
+    stages {
+        stage('Build jar') {
         agent {
-            docker{
+            docker {
                 image 'maven:eclipse-temurin:17-jdk-focal'
             }
         }
-            steps{
+            steps {
                bat "mvn clean package -DskipTests"
             }
         }
-        stage('build image'){
+        stage('build image') {
              steps{
                 script {
                     app = docker.build('sumeeetpr/selenium')
@@ -21,7 +21,7 @@ pipeline{
 //                  bat "docker build -t=sumeeetpr/selenium ."
             }
         }
-        stage('Push Image'){
+        stage('Push Image') {
 //             environment{
 //                 DOCKER_HUB = credentials('dockerhub_creds')
 //             }
