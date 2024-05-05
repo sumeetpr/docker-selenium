@@ -11,7 +11,7 @@ pipeline{
         }
         stage('build image'){
              steps{
-                 bat "docker build -t=sumeeetpr/selenium ."
+                 bat "docker build -t=sumeeetpr/selenium-new ."
             }
         }
         stage('Push Image'){
@@ -20,9 +20,9 @@ pipeline{
             }
              steps{
                  bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
-                 bat 'docker push sumeeetpr/selenium:latest'
-                 bat "docker tag sumeeetpr/selenium:latest sumeeetpr/selenium:${env.BUILD_NUMBER}"
-                 bat "docker push sumeeetpr/selenium:${env.BUILD_NUMBER}"
+                 bat 'docker push sumeeetpr/selenium-new:latest'
+                 bat "docker tag sumeeetpr/selenium-new:latest sumeeetpr/selenium:${env.BUILD_NUMBER}"
+                 bat "docker push sumeeetpr/selenium-new:${env.BUILD_NUMBER}"
             }
         }
     }
