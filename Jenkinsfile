@@ -21,7 +21,7 @@ pipeline{
              steps{
                  bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
                  bat 'docker push sumeeetpr/selenium-new:latest'
-                 bat "docker tag sumeeetpr/selenium-new:latest sumeeetpr/selenium:${env.BUILD_NUMBER}"
+                 bat "docker tag sumeeetpr/selenium-new:latest sumeeetpr/selenium-new:${env.BUILD_NUMBER}"
                  bat "docker push sumeeetpr/selenium-new:${env.BUILD_NUMBER}"
             }
         }
