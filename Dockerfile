@@ -5,8 +5,8 @@ WORKDIR /home/selenium-docker
 RUN apk add curl jq
 
 ADD target/docker-resources ./
-ADD runner.bat               runner.bat
+ADD runner.sh               runner.sh
 
 
-# start the runner_bk.sh
-ENTRYPOINT runner.bat
+# start the runner.sh
+ENTRYPOINT sh runner.sh
